@@ -48,7 +48,7 @@ public class ShoppingCartController
     @PostMapping("/items")
     public ShoppingCart addItem(@RequestBody CartItem cartItem) {
         //// return the updated cart with status 201 Created
-        return shoppingCartService.addItem(item);
+        return shoppingCartService.addItem(cartItem.getUserId(), cartItem);
     }
     
 

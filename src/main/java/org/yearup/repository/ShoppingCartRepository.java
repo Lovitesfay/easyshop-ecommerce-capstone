@@ -10,10 +10,11 @@ import java.util.List;
 @Repository
 public interface ShoppingCartRepository extends JpaRepository<CartItem, Integer>
 {
-    // changed line 14 to List
+    //// changed line 14 to List
     List<CartItem> findByUserId(int userId);
     CartItem findByUserIdAndProductId(int userId, int productId);
 
+   //// added this
     void save(int userId, ShoppingCart cartItem);
 
     void deleteByUserId(int userId);
