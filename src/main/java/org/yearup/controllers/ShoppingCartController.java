@@ -21,7 +21,9 @@ public class ShoppingCartController
     private final ShoppingCartService shoppingCartService;
     private final UserService userService;
 
-    public ShoppingCartController(ShoppingCartService shoppingCartService, UserService userService) {
+    public ShoppingCartController
+            (ShoppingCartService shoppingCartService,
+             UserService userService) {
         this.shoppingCartService = shoppingCartService;
         this.userService = userService;
     }
