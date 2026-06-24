@@ -14,13 +14,17 @@ import java.security.Principal;
 // only logged in users should have access to these actions
 
 @RestController
-@RequestMapping("(/cart")
+@RequestMapping("/cart")
 public class ShoppingCartController
 {
     // a shopping cart controller depends on the service layer
-    private ShoppingCartService shoppingCartService;
-    private UserService userService;
+    private final ShoppingCartService shoppingCartService;
+    private final UserService userService;
 
+    public ShoppingCartController(ShoppingCartService shoppingCartService, UserService userService) {
+        this.shoppingCartService = shoppingCartService;
+        this.userService = userService;
+    }
 
 
     // each method in this controller requires a Principal object as a parameter
@@ -34,7 +38,7 @@ public class ShoppingCartController
         int userId = user.getId();
 
         // use the shoppingCartService to get all items in the cart and return the cart
-        return null;
+        return shoppingCartService.getByUserId(userId);
     }
 
     // add a POST method to add a product to the cart - the url should be
