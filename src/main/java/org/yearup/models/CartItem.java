@@ -4,8 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "shopping_cart")
-public class CartItem
-{
+public class CartItem extends ShoppingCartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cart_item_id")

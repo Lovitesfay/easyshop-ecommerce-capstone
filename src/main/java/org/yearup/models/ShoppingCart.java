@@ -24,7 +24,7 @@ public class ShoppingCart
 
     public void addItem(CartItem item)
     {
-        items.put(item.getProductId(), item);
+        items.put(item.getProductId(), item );
     }
 
     public ShoppingCartItem get(int productId)
