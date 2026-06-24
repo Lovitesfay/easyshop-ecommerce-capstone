@@ -43,12 +43,19 @@ public class ShoppingCartController
         return shoppingCartService.getByUserId(userId);
     }
 
-    //// add a POST method to add a product to the cart - the url should be
-    //// https://localhost:8080/cart/products/15  (15 is the productId to be added)
-    @PostMapping("/items")
-    public ShoppingCart addItem(@RequestBody CartItem cartItem) {
-        //// return the updated cart with status 201 Created
-        return shoppingCartService.addItem(cartItem.getUserId(), cartItem);
+    /// add a POST method to add a product to the cart - the url should be
+    /// https://localhost:8080/cart/products/15  (15 is the productId to be added)
+    @PostMapping("/products/{productId}")
+    /// I UPDATED LINE 50 - 58
+    public ShoppingCart addItem(@PathVariable int productId, Principal principal)
+    {
+        String userName = principal.getName();
+
+        User user = userService.getByUserName(userName);
+
+        int userId = user.getId();
+
+        return shoppingCartService.addItem(userId, productId);
     }
     
 
@@ -56,6 +63,7 @@ public class ShoppingCartController
     //// add a PUT method to update an existing product in the cart - the url should be
     //// https://localhost:8080/cart/products/15  (15 is the productId to be updated)
     //// the BODY should be a ShoppingCartItem - quantity is the only value that will be updated; return the cart (200 OK)
+
 
 
     //// add a DELETE method to clear all products from the current users cart
