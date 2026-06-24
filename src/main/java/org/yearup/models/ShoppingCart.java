@@ -22,7 +22,7 @@ public class ShoppingCart
         return items.containsKey(productId);
     }
 
-    public void add(ShoppingCartItem item)
+    public void addItem(CartItem item)
     {
         items.put(item.getProductId(), item);
     }
