@@ -4,8 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.yearup.models.Profile;
 
-import java.security.Principal;
-
 @Repository
 public interface ProfileRepository extends JpaRepository<Profile, Integer>
 {
