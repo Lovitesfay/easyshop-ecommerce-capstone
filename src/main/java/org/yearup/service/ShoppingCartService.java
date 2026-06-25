@@ -72,6 +72,7 @@ public class ShoppingCartService
         CartItem item = shoppingCartRepository
                 .findByUserIdAndProductId(userId, productId);
 
+        //// Only update if the product already exists in the user's cart
         if(item != null)
         {
             if(quantity <= 0)
