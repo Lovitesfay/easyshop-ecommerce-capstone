@@ -18,4 +18,9 @@ public class ProfileService
     {
         return profileRepository.save(profile);
     }
+    //// I added GET profile
+    public Profile getByUserId(int userId)
+    {
+        return profileRepository.findByUserId(userId);
+    }
 }
