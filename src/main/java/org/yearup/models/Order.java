@@ -20,19 +20,7 @@ public class Order {
     {
     }
 
-    public Order(int orderId, int userId,
-                 LocalDateTime date, String address,
-                 String city, String state,
-                 String zip, BigDecimal shippingAmount) {
-        this.orderId = orderId;
-        this.userId = userId;
-        this.date = date;
-        this.address = address;
-        this.city = city;
-        this.state = state;
-        this.zip = zip;
-        this.shippingAmount = shippingAmount;
-    }
+
 
     public int getOrderId() {
         return orderId;
