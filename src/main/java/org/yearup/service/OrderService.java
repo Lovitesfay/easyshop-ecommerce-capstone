@@ -1,6 +1,7 @@
 package org.yearup.service;
 
 import org.springframework.stereotype.Service;
+import org.yearup.models.Profile;
 import org.yearup.models.*;
 import org.yearup.repository.OrderLineItemRepository;
 import org.yearup.repository.OrderRepository;
@@ -17,16 +18,19 @@ public class OrderService {
     private final OrderLineItemRepository orderLineItemRepository;
     private final ShoppingCartRepository shoppingCartRepository;
     private final ProductService productService;
+    private final ProfileService profileService;
 
     /// Constructor
     public OrderService(OrderRepository orderRepository,
                         OrderLineItemRepository orderLineItemRepository,
                         ShoppingCartRepository shoppingCartRepository,
-                        ProductService productService) {
+                        ProductService productService,
+                        ProfileService profileService) {
         this.orderRepository = orderRepository;
         this.orderLineItemRepository = orderLineItemRepository;
         this.shoppingCartRepository = shoppingCartRepository;
         this.productService = productService;
+        this.profileService = profileService;
     }
 
     /// Checkout

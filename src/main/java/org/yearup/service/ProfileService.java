@@ -8,13 +8,10 @@ import org.yearup.repository.ProfileRepository;
 public class ProfileService
 {
     private final ProfileRepository profileRepository;
-    private final ProfileService profileService;
 
-    public ProfileService(ProfileRepository profileRepository,
-                          ProfileService profileService)
+    public ProfileService(ProfileRepository profileRepository)
     {
         this.profileRepository = profileRepository;
-        this.profileService = profileService;
     }
 
     public Profile create(Profile profile)
