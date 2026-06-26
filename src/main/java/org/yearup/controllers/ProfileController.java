@@ -10,6 +10,7 @@ import java.security.Principal;
 
 @RestController
 @RequestMapping("/profile")
+@CrossOrigin(origins = "*")
 public class ProfileController {
 
     private final ProfileService profileService;

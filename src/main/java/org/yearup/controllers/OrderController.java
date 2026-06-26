@@ -1,5 +1,6 @@
 package org.yearup.controllers;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.yearup.models.Order;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import java.security.Principal;
 
 @RestController
 @RequestMapping("/orders")
+@CrossOrigin(origins = "*")
 public class OrderController {
 
     ///  made this fields
