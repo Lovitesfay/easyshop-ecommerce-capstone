@@ -81,6 +81,16 @@ public class ShoppingCartController
     //// https://localhost:8080/cart  - return the (now empty) cart so the front end can refresh it (200 OK)
     /// added lines 83-91
 
+
+    /// I added this ... delete one product from cart
+    @DeleteMapping("/products/{productId}")
+    public void removeProduct(@PathVariable int productId,
+                              Principal principal)
+    {
+        User user = userService.getByUserName(principal.getName());
+        shoppingCartService.removeProduct(user.getId(), productId);
+    }
+
     @DeleteMapping
     public ShoppingCart clearCart(Principal principal)
     {

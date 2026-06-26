@@ -89,6 +89,12 @@ public class ShoppingCartService
         return getByUserId(userId);
     }
 
+    ///  delete one by one
+    public void removeProduct(int userId, int productId)
+    {
+        shoppingCartRepository.deleteByUserIdAndProductId(userId, productId);
+    }
+
     /// added this to clear cart
     @Transactional
     public ShoppingCart clearCart(int userId)

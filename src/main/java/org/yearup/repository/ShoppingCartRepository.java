@@ -18,4 +18,7 @@ public interface ShoppingCartRepository extends JpaRepository<CartItem, Integer>
 /// added @Trasactional
     @Transactional
     void deleteByUserId(int userId);
+
+    @Transactional
+    void deleteByUserIdAndProductId(int userId, int productId);
 }

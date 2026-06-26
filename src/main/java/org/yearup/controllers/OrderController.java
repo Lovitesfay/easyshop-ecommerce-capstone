@@ -1,6 +1,6 @@
 package org.yearup.controllers;
 
-import org.springframework.core.annotation.Order;
+import org.yearup.models.Order;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
