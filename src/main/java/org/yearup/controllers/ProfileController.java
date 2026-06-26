@@ -1,8 +1,6 @@
 package org.yearup.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.yearup.models.Profile;
 import org.yearup.models.User;
 import org.yearup.service.ProfileService;
@@ -22,7 +20,7 @@ public class ProfileController {
         this.userService = userService;
     }
 
-    /// added getMapping for profile
+    /// added (GetMapping) for profile
     @GetMapping
     public Profile getProfile(Principal principal)
     {
@@ -32,5 +30,16 @@ public class ProfileController {
         return profileService.getByUserId(user.getId());
     }
 
+    /// I added @PutMapping update method
+    @PutMapping
+    public Profile updateProfile(@RequestBody Profile profile, Principal principal) {
+        String username = principal.getName();
+        User user = userService.getByUserName(username);
+
+        profile.setUserId(user.getId());
+
+        return profileService.update(user.getId(), profile);
+
+    }
 
 }
