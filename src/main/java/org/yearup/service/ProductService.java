@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import org.yearup.models.Product;
 import org.yearup.repository.ProductRepository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -23,11 +24,12 @@ public class ProductService
                 : productRepository.findAll();
         // changed return products.stream() to return productRepository.findAll()
         return productRepository.findAll().stream()
-                       .filter(p -> minPrice == null || p.getPrice() >= minPrice)
-                       .filter(p -> maxPrice == null || p.getPrice() <= maxPrice)
-                       .filter(p -> subCategory == null || subCategory.equalsIgnoreCase(p.getSubCategory()))
+                .filter(p -> minPrice == null || p.getPrice().compareTo(BigDecimal.valueOf(minPrice)) >= 0)
+                .filter(p -> maxPrice == null || p.getPrice().compareTo(BigDecimal.valueOf(maxPrice)) <= 0)
+                .filter(p -> subCategory == null || subCategory.equalsIgnoreCase(p.getSubCategory()))
+                .toList();
                       //removed this line .filter(Product::isFeatured)
-                       .toList();
+
     }
 
     public List<Product> listByCategoryId(int categoryId)

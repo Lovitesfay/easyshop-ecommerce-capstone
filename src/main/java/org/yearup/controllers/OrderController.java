@@ -28,6 +28,6 @@ public class OrderController {
         String username = principal.getName();
         User user = userService.getByUserName(username);
 
-        return orderService.checkout(user.getId());
+        return (Order) orderService.checkout(user.getId());
     }
 }
