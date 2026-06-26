@@ -1,9 +1,7 @@
 package org.yearup.service;
 
-import org.yearup.models.CartItem;
-import org.yearup.models.Order;
-import org.yearup.models.OrderLineItem;
-import org.yearup.models.Product;
+import org.springframework.stereotype.Service;
+import org.yearup.models.*;
 import org.yearup.repository.OrderLineItemRepository;
 import org.yearup.repository.OrderRepository;
 import org.yearup.repository.ShoppingCartRepository;
@@ -12,6 +10,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Service
 public class OrderService {
 
     private final OrderRepository orderRepository;
@@ -34,9 +33,19 @@ public class OrderService {
     public Order checkout(int userId) {
         List<CartItem> cartItems = shoppingCartRepository.findByUserId(userId);
 
+        Profile profile = profileService.getByUserId(userId);
         Order order = new Order();
         order.setUserId(userId);
         order.setDate(LocalDateTime.now());
+
+
+        // Shipping information
+        order.setAddress(profile.getAddress());
+        order.setCity(profile.getCity());
+        order.setState(profile.getState());
+        order.setZip(profile.getZip());
+
+        order.setShippingAmount(BigDecimal.ZERO);
 
         Order savedOrder = orderRepository.save(order);
 

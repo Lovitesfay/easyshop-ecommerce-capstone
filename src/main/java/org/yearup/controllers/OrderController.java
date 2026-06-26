@@ -2,12 +2,16 @@ package org.yearup.controllers;
 
 import org.springframework.core.annotation.Order;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.yearup.models.User;
 import org.yearup.service.OrderService;
 import org.yearup.service.UserService;
 
 import java.security.Principal;
 
+@RestController
+@RequestMapping("/orders")
 public class OrderController {
 
     ///  made this fields
