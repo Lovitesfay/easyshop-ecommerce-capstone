@@ -1,15 +1,33 @@
 package org.yearup.models;
 
+import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "order_line_items")
 public class OrderLineItem {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_line_item_id")
     private int orderLineItemId;
+
+    @Column(name = "order_id")
     private int orderId;
+
+    @Column(name = "product_id")
     private int productId;
+
+    @Column(name = "sales_price")
     private BigDecimal salesPrice;
+
+    @Column(name = "quantity")
     private int quantity;
+
+    @Column(name = "discount")
     private BigDecimal discount;
+
 
     public OrderLineItem()
     {
