@@ -1,7 +1,12 @@
 package org.yearup.controllers;
 
+import org.springframework.core.annotation.Order;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.yearup.models.User;
 import org.yearup.service.OrderService;
 import org.yearup.service.UserService;
+
+import java.security.Principal;
 
 public class OrderController {
 
@@ -14,5 +19,15 @@ public class OrderController {
         this.orderService = orderService;
         this.userService = userService;
 
+    }
+
+    /// @PostMapping Checkout method
+    @PostMapping
+    public Order checkout(Principal principal)
+    {
+        String username = principal.getName();
+        User user = userService.getByUserName(username);
+
+        return orderService.checkout(user.getId());
     }
 }
